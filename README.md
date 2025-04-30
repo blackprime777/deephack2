@@ -10,39 +10,33 @@ Da Payback Community
 
 # Installation
 ```bash
-📌 System Requirements
-Kali Linux (Recommended) or Termux (Android)
 
-Python 3.8+
+# 🔥 Deep Hack - Android/Kali Edition
 
-Root/admin access (for nmap scans)
+![Banner](https://i.imgur.com/JQ7w3Rn.png)
 
-🚀 Installation Guide
-Kali Linux
-\
+## 📱 System Requirements
+| Platform       | Requirements                          |
+|----------------|---------------------------------------|
+| **Termux (Android)** | Android 8+ with 2GB RAM               |
+| **Kali Linux**       | x86_64 with 4GB RAM (Recommended)     |
+
+## 🚀 Installation
+
+### ⚡ For Termux (Android)
 ```bash
+# 1. Setup Termux
+termux-setup-storage
+pkg update && pkg upgrade
+pkg install -y nmap python git openssh
 
-sudo apt update && sudo apt install -y nmap python3-pip git
+# 2. Clone and install
 git clone https://github.com/blackprime777/deephack.git
 cd deephack
 pip install -r requirements.txt
-sudo python3 payback.py
 
-#Termux (Android)
-
-pkg update && pkg install -y nmap python git
-pip install -r requirements.txt
-
-
-
-HOW TO INSTALL AND RUN VIRTUAL ENV
-cd path/to/deephack
-python3 -m venv venv
-source venv/bin/activate
-
-
-
-
+# 3. Run (Non-root)
+python payback.py
 
 Disclaimer
 - WARNING: Unauthorized use will:
