@@ -1,2 +1,4 @@
-# requirements.txt
+# Minimal requirements for Termux
 colorama==0.4.6
+cryptography==42.0.5
+requests==2.31.0
