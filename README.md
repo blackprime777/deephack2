@@ -1,5 +1,4 @@
-# deephack2
-Da Payback Community 
+
 # deephack
 Da Payback Community 
 # LEGAL WARNING
