@@ -1,6 +1,2 @@
-# Core Dependencies
-colorama==0.4.6  # Cross-platform colored terminal text
-cryptography==42.0.5  # Encryption/decryption
-requests==2.31.0  # Blockchain API calls
-python-nmap==0.7.1  # Nmap integration (Android-compatible)
-
+# requirements.txt
+colorama==0.4.6
