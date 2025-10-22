@@ -4,13 +4,14 @@ import time
 import random
 import sys
 from colorama import Fore, Style, init
+import unicodedata
 
 # Initialize
 init(autoreset=True)
 os.system('clear')
 
 # Configuration
-AUTH_KEY = "@admin/com"
+AUTH_KEY = "@admin/com"  # kept for reference if you want to restore later
 SESSION_LOG = "/data/data/com.termux/files/home/storage/shared/payback_session.log"
 
 def show_banner():
@@ -27,29 +28,22 @@ def show_banner():
 
 def log_session(event, data=""):
     """Log all activity to external file"""
-    with open(SESSION_LOG, "a") as f:
-        timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
-        f.write(f"[{timestamp}] {event} {data}\n")
+    try:
+        with open(SESSION_LOG, "a") as f:
+            timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+            f.write(f"[{timestamp}] {event} {data}\n")
+    except Exception:
+        # If logging path isn't available, keep running silently
+        pass
 
 def auth():
-    """Secure authentication with lockdown"""
-    for attempt in range(3, 0, -1):
-        try:
-            key = input(f"{Fore.YELLOW}[?] ENTER AUTH KEY ({attempt} attempts): {Style.RESET_ALL}")
-            if key == AUTH_KEY:
-                log_session("AUTH_SUCCESS")
-                return True
-            print(f"{Fore.RED}[!] INVALID KEY{Style.RESET_ALL}")
-            log_session("AUTH_FAILED", f"attempt_{3-attempt}")
-        except KeyboardInterrupt:
-            log_session("AUTH_INTERRUPTED")
-            sys.exit(1)
-    
-    log_session("AUTH_LOCKED")
-    print(f"\n{Fore.RED}[!] MAXIMUM ATTEMPTS REACHED{Style.RESET_ALL}")
-    print(f"{Fore.RED}[!] SYSTEM LOCKED{Style.RESET_ALL}")
-    time.sleep(2)
-    sys.exit(1)
+    """
+    Authentication bypassed.
+    This function intentionally returns True so the tool runs without prompting for an auth key.
+    If you want to restore auth, re-implement the original logic.
+    """
+    log_session("AUTH_BYPASSED")
+    return True
 
 def generate_hacking_phrases():
     """Dynamic hacking phrases with progress weighting"""
@@ -93,10 +87,13 @@ def generate_result(wallet):
 
 def main():
     # Setup environment
-    os.makedirs(os.path.dirname(SESSION_LOG), exist_ok=True)
+    try:
+        os.makedirs(os.path.dirname(SESSION_LOG), exist_ok=True)
+    except Exception:
+        pass
     log_session("SESSION_STARTED")
     
-    # Authentication
+    # Authentication (bypassed)
     if not auth():
         return
     
