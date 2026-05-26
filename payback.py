@@ -3,7 +3,7 @@ import os
 import time
 import random
 import sys
-from colorama import fore, Style, init
+from colorama import Fore, Style, init
 
 # Initialize
 init(autoreset=True)
