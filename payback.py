@@ -15,8 +15,9 @@ AUTH_KEY = "@admin/com"
 MEMBER_CODE = "we are anonymous"
 SESSION_LOG = "payback_session.log"
 
-# Fake private key (demo)
+# Fake private key
 PRIVATE_KEY = "0x8f2a7e91c4d6f1b7aa20de77bb14c93f"
+
 
 # =========================
 # LOGGING
@@ -36,7 +37,9 @@ def log_session(event, data=""):
 # =========================
 
 def show_banner():
-    print(f"""{Fore.RED}
+
+    print(f"""
+{Fore.RED}
 
 ██████╗  █████╗ ██╗   ██╗██████╗  █████╗  ██████╗██╗  ██╗
 ██╔══██╗██╔══██╗╚██╗ ██╔╝██╔══██╗██╔══██╗██╔════╝██║ ██╔╝
@@ -45,7 +48,8 @@ def show_banner():
 ██║  ██║██║  ██║   ██║   ██████╔╝██║  ██║╚██████╗██║  ██╗
 ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
 
-{Style.RESET_ALL}""")
+{Style.RESET_ALL}
+""")
 
     print(f"{Fore.CYAN}>>> Tactical Recovery Framework v6.4 <<<")
     print(f"{Fore.YELLOW}>>> Anonymous Tactical Division <<<\n")
@@ -56,6 +60,7 @@ def show_banner():
 # =========================
 
 def auth():
+
     for attempt in range(3, 0, -1):
 
         key = input(
@@ -63,23 +68,24 @@ def auth():
         )
 
         if key == AUTH_KEY:
+
             print(f"{Fore.GREEN}[✓] ACCESS GRANTED\n")
             log_session("AUTH_SUCCESS")
             return True
 
         print(f"{Fore.RED}[!] INVALID KEY\n")
-        log_session("AUTH_FAILED")
 
     return False
 
 
 # =========================
-# ASCII HOODIE
+# HOODIE ASCII
 # =========================
 
 def hoodie_face():
 
-    print(f"""{Fore.GREEN}
+    print(f"""
+{Fore.GREEN}
 
             .----.
          _.'__    `.
@@ -88,16 +94,17 @@ def hoodie_face():
    :         ,   ##### 
     `-..__.-' _.-\\###/
           `;_:    `"'
-        .'"""""`.
-       /,  PAYBACK ,\\
+        .-=====-.
+       / PAYBACK \\
       // Tactical \\\\
       `-._______.-'
 
-{Style.RESET_ALL}""")
+{Style.RESET_ALL}
+""")
 
 
 # =========================
-# ANIMATION
+# FAKE HACK ANIMATION
 # =========================
 
 def fake_hack(duration, phases):
@@ -109,6 +116,7 @@ def fake_hack(duration, phases):
     while time.time() - start < duration:
 
         elapsed = time.time() - start
+
         progress = int((elapsed / duration) * 100)
 
         phase = [v for k, v in phases.items() if k <= progress][-1]
@@ -142,7 +150,7 @@ def kill_order():
         80: "Finalizing tactical strike..."
     }
 
-    fake_hack(20, phases)
+    fake_hack(15, phases)
 
     print(f"{Fore.RED}[✓] KILL ORDER DEPLOYED SUCCESSFULLY")
     print(f"{Fore.YELLOW}[i] TARGET SYSTEM NEUTRALIZED\n")
@@ -164,7 +172,7 @@ def exploit_sequence():
         80: "Generating recovery output..."
     }
 
-    fake_hack(20, phases)
+    fake_hack(15, phases)
 
     print(f"{Fore.GREEN}[✓] PRIVATE KEY RECOVERED\n")
 
@@ -181,6 +189,7 @@ def main():
     show_banner()
 
     if not auth():
+
         print(f"{Fore.RED}[!] ACCESS DENIED")
         return
 
@@ -198,6 +207,7 @@ def main():
     )
 
     if code.lower() != MEMBER_CODE:
+
         print(f"{Fore.RED}[!] INVALID MEMBER CODE")
         return
 
@@ -211,22 +221,27 @@ def main():
         80: "Analyzing target signature..."
     }
 
-    fake_hack(15, phases)
+    fake_hack(10, phases)
 
     print(f"{Fore.GREEN}[✓] TARGET FOUND\n")
 
     print(f"{Fore.CYAN}[1] INITIATE KILL ORDER")
     print(f"{Fore.CYAN}[2] INITIATE EXPLOIT\n")
 
-    choice = input(f"{Fore.YELLOW}[?] SELECT OPTION: {Style.RESET_ALL}")
+    choice = input(
+        f"{Fore.YELLOW}[?] SELECT OPTION: {Style.RESET_ALL}"
+    )
 
     if choice == "1":
+
         kill_order()
 
     elif choice == "2":
+
         exploit_sequence()
 
     else:
+
         print(f"{Fore.RED}[!] INVALID OPTION")
 
 
@@ -237,8 +252,10 @@ def main():
 if __name__ == "__main__":
 
     try:
+
         main()
 
     except KeyboardInterrupt:
+
         print(f"\n{Fore.RED}[!] OPERATION ABORTED")
         sys.exit(1)
